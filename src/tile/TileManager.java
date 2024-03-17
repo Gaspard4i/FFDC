@@ -2,7 +2,11 @@ package tile;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
 
 import javax.imageio.ImageIO;
 
@@ -12,29 +16,31 @@ public class TileManager {
     
     GamePanel gp;
     Tile[] tile;
+    int mapTileNum[][];
 
     public TileManager(GamePanel gp){
         this.gp = gp;
 
         tile = new Tile[10]; // number of tile we need
-
+        mapTileNum = new int[gp.maxSceenCol][gp.maxScreenRow]; // map
         getTileImage();
+        loadMap("/res/maps/map01.txt");
     }
 
     public void getTileImage(){
 
         try{
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass01.png")); // grass
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/grass01.png")); // grass
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/earth.png")); // earth
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/earth.png")); // earth
 
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water00.png")); // water
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/water00.png")); // water
 
             tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wall.png")); // wall
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/wall.png")); // wall
 
         }catch(IOException e ) {
             e.printStackTrace();
@@ -42,9 +48,65 @@ public class TileManager {
 
     }
 
+    public void loadMap(String mapPath){
+        try {
+
+            InputStream is = getClass().getResourceAsStream(mapPath);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            int col = 0;
+            int row = 0;
+
+            while (col < gp.maxSceenCol && row < gp.maxScreenRow) {
+
+                String line = br.readLine();
+
+                while (col < gp.maxSceenCol) {
+                    
+                    String numbers[] = line.split(" ");
+
+                    int num = Integer.parseInt(numbers[col]);
+
+                    mapTileNum[col][row] = num;
+                    col++;
+
+                    
+                }
+                if (col == gp.maxSceenCol) {
+                    col = 0 ;
+                    row++;
+                }
+            }   
+
+            br.close(); // close the bufferedReader
+
+        } catch (Exception e) {
+
+        }
+    }
+
     public void draw(Graphics2D g2){
 
-        g2.drawImage(tile[0].image,0,0,gp.tileSize, gp.tileSize, null);
+        int x =0;
+        int y= 0;
+        int row= 0;
+        int col =0;
+
+        while (col < gp.maxSceenCol && row < gp.maxScreenRow) {
+
+            int tileNum = mapTileNum[col][row];
+
+            g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null) ;
+            col++;
+            x += gp.tileSize;
+
+            if (col == gp.maxSceenCol) {
+                col = 0;
+                x = 0;
+                row++;
+                y += gp.tileSize;
+            }
+        }
     }
 }
 
