@@ -16,17 +16,27 @@ public class Player extends Entity{
     GamePanel gp;
     KeyHandler keyH;
 
+    public final int screenX ;
+    public final int screenY;
+
     public Player(GamePanel gp, KeyHandler keyH){
+
         this.gp = gp;
         this.keyH = keyH;
+
+        screenX = gp.screenWidth/2 - (gp.tileSize/2);
+        screenY = gp.screenHeight/2 - (gp.tileSize/2);
+
         setDefaultValues();
         getPlayerImage();
     }
     public void setDefaultValues(){
-        x = 100;
-        y = 100;
-        speed = 4;
-        direction = "down";
+
+
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 21;
+        speed = 10; // speed of the player in pixel 
+        direction = "down"; // direction that the player is facing entring the gmame
     }
 
     public void getPlayerImage(){
@@ -52,16 +62,16 @@ public class Player extends Entity{
 
             if(keyH.upPressed == true){
                 direction = "up";
-                y -= speed;
+                worldY -= speed;
             }else if(keyH.downPressed == true){
                 direction = "down";
-                y += speed;
+                worldY += speed;
             }else if (keyH.leftPressed == true) {
                 direction = "left";
-                x -= speed;
+                worldX -= speed;
             }else if (keyH.rightPressed == true) {
                 direction = "right";
-                x += speed;
+                worldX += speed;
             }
 
             spriteCounter++ ;
@@ -126,7 +136,7 @@ public class Player extends Entity{
         
         }
 
-        g2.drawImage(image, x, y, gp.tileSize,gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize,gp.tileSize, null);
 
     }
 }   
