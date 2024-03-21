@@ -19,6 +19,9 @@ public class Player extends Entity{
 
     public final int screenX ;
     public final int screenY;
+    public final int spriteSpeed = 7; // speed of sprites changes 
+    int hasKey = 0;
+
 
     public Player(GamePanel gp, KeyHandler keyH){
 
@@ -32,6 +35,8 @@ public class Player extends Entity{
 
         solidArea.x = 16; // 8
         solidArea.y = 16; // 16
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         solidArea.width = 16; // 32
         solidArea.height = 28; // 32
 
@@ -43,8 +48,8 @@ public class Player extends Entity{
 
         worldX = gp.tileSize * 23;
         worldY = gp.tileSize * 21;
-        speed = 5; // speed of the player in pixel 
-        direction = "down"; // direction that the player is facing entring the gmame
+        speed = 8; // speed of the player in pixel 
+        direction = "stay"; // direction that the player iniv s facing entring the gmame
     }
 
     public void getPlayerImage(){
@@ -115,6 +120,10 @@ public class Player extends Entity{
             collisonOn = false;
             gp.cChecker.checkTile(this);
 
+            // CHECK OBJECT COLLISION
+            int objIndex = gp.cChecker.checkObject(this, true);
+            pickUpObject(objIndex);
+
             // IF COLLISON IS FALSE, PLAYER CAN MOVE
             if (collisonOn == false) {
                 switch (direction) {
@@ -132,7 +141,7 @@ public class Player extends Entity{
             }
 
             spriteCounter++ ;
-            if (spriteCounter > 7) {
+            if (spriteCounter > spriteSpeed) {
                 if (spriteNum == 1) {
                     spriteNum =2;
                 }else if (spriteNum ==2 ) {
@@ -152,8 +161,29 @@ public class Player extends Entity{
     
         }
 
+    }
 
+    public void pickUpObject(int i){
 
+        if (i != 999) {
+            
+            String objectName = gp.obj[i].name;
+            switch (objectName) {
+                case "Key":
+                    hasKey++;
+                    gp.obj[i] = null;
+
+                    break;
+            
+                case "Door":
+                if (hasKey >0) {
+                    gp.obj[i] = null;
+                    hasKey--;
+                }
+                default:
+                    break;
+            }
+        }
     }
 
     public void draw(Graphics2D g2){
