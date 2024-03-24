@@ -46,6 +46,7 @@ public class Player extends Entity{
         worldY = gp.tileSize * 21;
         speed = 8; // speed of the player in pixel 
         direction = "stay"; // direction that the player iniv s facing entring the gmame
+        
     }
 
     public void getPlayerImage(){

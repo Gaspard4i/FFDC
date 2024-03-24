@@ -69,7 +69,8 @@ public class UI {
             // END POSITION
             AssertSetter endChest = new AssertSetter(gp);
             endChest.setEndChest();
-            
+
+            gp.player.spriteNum = 1;
             gp.player.direction = "stay";
             gp.player.worldX = gp.tileSize * 23;
             gp.player.worldY = gp.tileSize * 21;

@@ -1,10 +1,12 @@
 package tile;
 
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.Buffer;
 
 import javax.imageio.ImageIO;
 
@@ -16,7 +18,7 @@ public class TileManager {
     public Tile[] tile;
     public int mapTileNum[][];
 
-    public TileManager(GamePanel gp){
+        public TileManager(GamePanel gp){
         this.gp = gp;
 
         tile = new Tile[20]; // number of tile we need
@@ -30,6 +32,11 @@ public class TileManager {
         try{
             tile[0] = new Tile();
             tile[0] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/grass01.png")); // grass
+
+            // BufferedImage scaleImage = new BufferedImage(gp.tileSize, gp.tileSize, tile[0].image.getType());
+            // Graphics2D g2 = scaleImage.createGraphics();
+            // g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
+            // tile[0].image = scaleImage;
 
             tile[1] = new Tile();
             tile[1] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/wall.png")); // wall (solid)
@@ -51,7 +58,7 @@ public class TileManager {
             tile[5] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/road00.png")); // road
 
             tile[6] = new Tile();
-            tile[6] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/hut.png")); // hut
+            tile[6] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/hut.png")); // hut (solid)
             tile[6] .collison = true;
 
             tile[7] = new Tile();

@@ -112,6 +112,7 @@ public class GamePanel extends JPanel implements Runnable{
             }
 
             if (timer >= 1000000000) {
+                
                 System.out.println("FPS: " + drawCount);
                 drawCount = 0;
                 timer = 0;
@@ -126,8 +127,13 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
 
         super.paintComponent(g);
-        
         Graphics2D  g2 = (Graphics2D)g;
+
+        // DEBUG
+        long drawStart = 0;
+        if (keyH.checkDrawTime) {
+            drawStart = System.nanoTime();
+        }
 
         // TILE
         tileM.draw(g2); // init le terrain
@@ -142,7 +148,20 @@ public class GamePanel extends JPanel implements Runnable{
         
         // UI 
         ui.draw(g2);
-        
+
+        // DEBUG
+        if (keyH.checkDrawTime) {
+
+        long drawEnd = System.nanoTime();
+        long passed = drawEnd - drawStart;
+        g2.setColor(Color.white);
+        g2.drawString("Draw Time : " + passed , 10, 400);       
+        g2.drawString("x : " + player.worldX/tileSize , 10,  400 + tileSize);
+        g2.drawString("y : " +  player.worldY/tileSize, 10, 400 + tileSize*2);
+        System.out.println("Draw Time: " + passed); 
+        }
+
+
         // END
         g2.dispose();
     }
