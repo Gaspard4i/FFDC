@@ -1,8 +1,6 @@
 package main;
 
-import object.OBJ_Chest;
-import object.OBJ_Door;
-import object.OBJ_Key;
+import object.*;
 
 public class AssertSetter {
     
@@ -38,5 +36,13 @@ public class AssertSetter {
         gp.obj[5] = new OBJ_Chest();
         gp.obj[5].worldX = 10 * gp.tileSize;
         gp.obj[5] .worldY = 7 * gp.tileSize;
+
+        gp.obj[6] = new OBJ_Boots();
+        gp.obj[6].worldX = 37 * gp.tileSize;
+        gp.obj[6] .worldY = 42 * gp.tileSize;
+
+        // gp.obj[7] = new OBJ_Chest();
+        // gp.obj[7].worldX = 10 * gp.tileSize;
+        // gp.obj[7] .worldY = 7 * gp.tileSize;
     }
 }

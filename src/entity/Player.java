@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import main.Sound;
 
 public class Player extends Entity{
     
@@ -172,14 +173,24 @@ public class Player extends Entity{
                 case "Key":
                     hasKey++;
                     gp.obj[i] = null;
-
+                    gp.playSoundEffect(1);
                     break;
             
                 case "Door":
-                if (hasKey >0) {
+                if (hasKey > 0) {
                     gp.obj[i] = null;
                     hasKey--;
+                    gp.playSoundEffect(3);
+
                 }
+                System.out.println("Has " + hasKey +" key(s).");
+                break;
+                case "Boots":
+                    speed += 2;
+                    gp.obj[i] = null;
+                    gp.playSoundEffect(2);
+
+                    break;
                 default:
                     break;
             }
