@@ -1,17 +1,12 @@
 package entity;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
-import main.GamePanel;
-import main.KeyHandler;
-import main.Sound;
+import main.*;
 
 public class Player extends Entity{
     
@@ -21,7 +16,7 @@ public class Player extends Entity{
     public final int screenX ;
     public final int screenY;
     public final int spriteSpeed = 7; // speed of sprites changes 
-    int hasKey = 0;
+    public int hasKey = 0;
 
 
     public Player(GamePanel gp, KeyHandler keyH){
@@ -171,26 +166,46 @@ public class Player extends Entity{
             String objectName = gp.obj[i].name;
             switch (objectName) {
                 case "Key":
+                    gp.playSE(0);
                     hasKey++;
                     gp.obj[i] = null;
-                    gp.playSoundEffect(1);
+                    gp.ui.showMessage("You got a key !");
+
                     break;
-            
                 case "Door":
                 if (hasKey > 0) {
+                    gp.playSE(2);
                     gp.obj[i] = null;
                     hasKey--;
-                    gp.playSoundEffect(3);
+                    gp.ui.showMessage("You opened the door !");
+
+                }else{
+                    gp.ui.showMessage("You need a key !");
 
                 }
                 System.out.println("Has " + hasKey +" key(s).");
+
                 break;
                 case "Boots":
+                    gp.playSE(1);
                     speed += 2;
                     gp.obj[i] = null;
-                    gp.playSoundEffect(2);
+                    gp.ui.showMessage("You got boots ! Speed up !");
+
 
                     break;
+                case "Chest":
+                if(!gp.ui.gameFinished){
+                    gp.stopMusic();
+                    gp.playSE(3);
+                    gp.ui.gameFinished = true;
+            }
+
+                gp.ui.showMessage("You won !");
+                
+
+
+                break;
                 default:
                     break;
             }

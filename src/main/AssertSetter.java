@@ -41,8 +41,15 @@ public class AssertSetter {
         gp.obj[6].worldX = 37 * gp.tileSize;
         gp.obj[6] .worldY = 42 * gp.tileSize;
 
-        // gp.obj[7] = new OBJ_Chest();
-        // gp.obj[7].worldX = 10 * gp.tileSize;
-        // gp.obj[7] .worldY = 7 * gp.tileSize;
+        
+    }
+
+    public void setEndChest(){
+    
+        if(gp.ui.gameFinished){
+            gp.obj[7] = new OBJ_Chest();
+            gp.obj[7].worldX = 23 * gp.tileSize;
+            gp.obj[7] .worldY = 20* gp.tileSize;
+        }
     }
 }

@@ -1,16 +1,14 @@
 package tile;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
 
 import javax.imageio.ImageIO;
 
-import main.GamePanel;
+import main.*;
 
 public class TileManager {
     
