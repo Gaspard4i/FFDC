@@ -1,12 +1,10 @@
 package tile;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
 
 import javax.imageio.ImageIO;
 
@@ -21,53 +19,84 @@ public class TileManager {
         public TileManager(GamePanel gp){
         this.gp = gp;
 
-        tile = new Tile[20]; // number of tile we need
+        tile = new Tile[50]; // number of tile we need
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldCol]; // map
         getTileImage();
-        loadMap("/res/maps/WorldMap1.txt");
+        loadMap("/res/maps/WorldMap2.txt");
     }
 
     public void getTileImage(){
 
-        try{
-            tile[0] = new Tile();
-            tile[0] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/grass01.png")); // grass
+        setup(0, "grass00", false); // simple grass
+        setup(1, "grass00", false); // simple grass
+        setup(2, "grass00", false); // simple grass
+        setup(3, "grass00", false); // simple grass
+        setup(4, "grass00", false); // simple grass
+        setup(5, "grass00", false); // simple grass
+        setup(6, "grass00", false); // simple grass
+        setup(7, "grass00", false); // simple grass
+        setup(8, "grass00", false); // simple grass
+        setup(9, "grass00", false); // simple grass     
 
-            // BufferedImage scaleImage = new BufferedImage(gp.tileSize, gp.tileSize, tile[0].image.getType());
-            // Graphics2D g2 = scaleImage.createGraphics();
-            // g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
-            // tile[0].image = scaleImage;
+        setup(10, "grass00", false); // simple grass
+        setup(11, "grass01", false); // grass
 
-            tile[1] = new Tile();
-            tile[1] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/wall.png")); // wall (solid)
-            tile[1] .collison = true;
+        setup(12, "water00", true); // water
+        setup(13, "water01", true); // water
+        setup(14, "water02", true); // water
+        setup(15, "water03", true); // water
+        setup(16, "water04", true); // water
+        setup(17, "water05", true); // water
+        setup(18, "water06", true); // water
+        setup(19, "water07", true); // water
+        setup(20, "water08", true); // water
+        setup(21, "water09", true); // water
+        setup(22, "water10", true); // water
+        setup(23, "water11", true); // water
+        setup(24, "water12", true); // water
+        setup(25, "water13", true); // water
+        
+        
+        setup(26, "road00", false); // road
+        setup(27, "road01", false); // road
+        setup(28, "road02", false); // road
+        setup(29, "road03", false); // road
+        setup(30, "road04", false); // road
+        setup(31, "road05", false); // road
+        setup(32, "road06", false); // road
+        setup(33, "road07", false); // road
+        setup(34, "road08", false); // road
+        setup(35, "road09", false); // road
+        setup(36, "road10", false); // road
+        setup(37, "road11", false); // road
+        setup(38, "road12", false); // road
 
-            tile[2] = new Tile();
-            tile[2] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/water01.png")); // water 
-            tile[2] .collison = true;
+        setup(39, "earth", false); // earth
 
-            tile[3] = new Tile();
-            tile[3] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/earth.png")); // earth
+        setup(40, "wall", true); // wall
 
-            tile[4] = new Tile();
-            tile[4] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tree.png")); // tree (solid)
-            tile[4] .collison = true;
+        setup(41, "tree", true); // tree
 
+        setup(42, "floor01", false); // floor
 
-            tile[5] = new Tile();
-            tile[5] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/road00.png")); // road
+        setup(43, "table01", true); // table
 
-            tile[6] = new Tile();
-            tile[6] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/hut.png")); // hut (solid)
-            tile[6] .collison = true;
+        setup(44, "hut", true); // hut
+    }
 
-            tile[7] = new Tile();
-            tile[7] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/floor01.png")); // floor
+    public void setup(int index, String imagePath, boolean collison){
 
-        }catch(IOException e ) {
+        UtilityTool uTool = new UtilityTool();
+
+        try {
+                tile[index] = new Tile();
+                tile[index] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/"+imagePath+".png"));
+                tile[index] .image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+                tile[index] .collison = collison;
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void loadMap(String mapPath){
@@ -126,7 +155,7 @@ public class TileManager {
                 && worldY + gp.tileSize > gp.player.worldY - gp.player.screenY
                 && worldY - gp.tileSize< gp.player.worldY + gp.player.screenY) { // create a boundary to draw only the tiles around the player
 
-                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null) ;
+                g2.drawImage(tile[tileNum].image, screenX, screenY, null) ;
 
             }
             worldCol++;

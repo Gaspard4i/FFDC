@@ -17,6 +17,8 @@ public class Player extends Entity{
     public final int screenY;
     public final int spriteSpeed = 7; // speed of sprites changes 
     public int hasKey = 0;
+    public boolean boy = true;
+    public boolean cat = false;
 
 
     public Player(GamePanel gp, KeyHandler keyH){
@@ -50,51 +52,99 @@ public class Player extends Entity{
     }
 
     public void getPlayerImage(){
-        try{
-            up1 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_up_2.png"));
-            up3 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_up_3.png"));
-            up4 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_up_4.png"));
-            up5 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_up_5.png"));
-            up6 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_up_6.png"));
+
+        if (boy) {
+       // UP
+        up1 = setup("boy_up_1");
+        up2 = setup("boy_up_2");
+        up3 = setup("boy_up_3");
+        up4 = setup("boy_up_4");
+        up5 = setup("boy_up_5");
+        up6 = setup("boy_up_6");
 
 
-            down1 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_down_2.png"));
-            down3 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_down_3.png"));
-            down4 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_down_4.png"));
-            down5 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_down_5.png"));
-            down6 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_down_6.png"));
+        // DOWN
+        down1 = setup("boy_down_1");
+        down2 = setup("boy_down_2");
+        down3 = setup("boy_down_3");
+        down4 = setup("boy_down_4");
+        down5 = setup("boy_down_5");
+        down6 = setup("boy_down_6");
 
+        // LEFT
 
-            left1 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_left_2.png"));
-            left3 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_left_3.png"));
-            left4 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_left_4.png"));
-            left5 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_left_5.png"));
-            left6 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_left_6.png"));
+        left1 = setup("boy_left_1");
+        left2 = setup("boy_left_2");
+        left3 = setup("boy_left_3");
+        left4 = setup("boy_left_4");
+        left5 = setup("boy_left_5");
+        left6 = setup("boy_left_6");
+        
+        // RIGHT
 
+        right1 = setup("boy_right_1");
+        right2 = setup("boy_right_2");
+        right3 = setup("boy_right_3");
+        right4 = setup("boy_right_4");
+        right5 = setup("boy_right_5");
+        right6 = setup("boy_right_6");
 
-            right1 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_right_2.png"));
-            right3 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_right_3.png"));
-            right4 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_right_4.png"));
-            right5 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_right_5.png"));
-            right6 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_right_6.png"));
+        // STAY
 
-
-            stay1 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_stay_1.png"));
-            stay2 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_stay_2.png"));
-            stay3 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_stay_3.png"));
-            stay4 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_stay_4.png"));
-            stay5 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_stay_5.png"));
-            stay6 = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy_stay_6.png"));
-
-        } catch(IOException e) {
-            e.printStackTrace();
+        stay1 = setup("boy_stay_1");
+        stay2 = setup("boy_stay_2");
+        stay3 = setup("boy_stay_3");
+        stay4 = setup("boy_stay_4");
+        stay5 = setup("boy_stay_5");
+        stay6 = setup("boy_stay_6");
         }
+    // if (cat) {
+    //         // LEFT
+
+    //     left1 = setup("cat_left_1");
+    //     left2 = setup("cat_left_2");
+    //     left3 = setup("cat_left_3");
+    //     left4 = setup("cat_left_4");
+    //     left5 = setup("cat_left_5");
+    //     left6 = setup("cat_left_6");
+        
+    //     // RIGHT
+
+    //     right1 = setup("cat_right_1");
+    //     right2 = setup("cat_right_2");
+    //     right3 = setup("cat_right_3");
+    //     right4 = setup("cat_right_4");
+    //     right5 = setup("cat_right_5");
+    //     right6 = setup("cat_right_6");
+
+    //     // STAY
+
+    //     stay1 = setup("cat_stay_1");
+    //     stay2 = setup("cat_stay_2");
+    //     stay3 = setup("cat_stay_3");
+    //     stay4 = setup("cat_stay_4");
+    //     stay5 = setup("cat_stay_5");
+    //     stay6 = setup("cat_stay_6");
+    // }
+
     }
     
+    public BufferedImage setup(String imageName){
+
+        UtilityTool uTool = new UtilityTool();
+        BufferedImage image = null;
+
+        try {
+
+            image = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/" + imageName + ".png"));
+            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+
+        } catch (IOException e) {
+            e.printStackTrace();    
+        }
+        return image;
+
+    }
             
 
     public void update(){
