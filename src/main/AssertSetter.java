@@ -3,7 +3,7 @@ package main;
 import object.*;
 
 public class AssertSetter {
-    
+    int counter = 8;
     GamePanel gp;
 
     public AssertSetter(GamePanel gp){

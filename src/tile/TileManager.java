@@ -22,13 +22,13 @@ public class TileManager {
         tile = new Tile[50]; // number of tile we need
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldCol]; // map
         getTileImage();
-        loadMap("/res/maps/WorldMap2.txt");
+        loadMap("/res/maps/WorldMap5.txt");
     }
 
     public void getTileImage(){
 
         setup(0, "grass00", false); // simple grass
-        setup(1, "grass00", false); // simple grass
+        setup(1, "grass01", false); // simple grass
         setup(2, "grass00", false); // simple grass
         setup(3, "grass00", false); // simple grass
         setup(4, "grass00", false); // simple grass
@@ -90,7 +90,6 @@ public class TileManager {
         setup(47, "wall", false); // fake wall
 
         setup(48, "tree", false); // fake tree
-        
     }
 
     public void setup(int index, String imagePath, boolean collison){
@@ -165,7 +164,6 @@ public class TileManager {
                 && worldY - gp.tileSize< gp.player.worldY + gp.player.screenY) { // create a boundary to draw only the tiles around the player
 
                 g2.drawImage(tile[tileNum].image, screenX, screenY, null) ;
-
             }
             worldCol++;
 
