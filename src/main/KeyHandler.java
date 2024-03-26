@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener{
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed, noKeyMovePressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, noKeyMovePressed, restartPressed, run;
     // DEBUG
     public boolean checkDrawTime = false;
 
@@ -33,6 +33,12 @@ public class KeyHandler implements KeyListener{
         if(code == KeyEvent.VK_D ){ // D pour le clavier anglais
             noKeyMovePressed = false;
             rightPressed = true;
+        }
+        if (code == KeyEvent.VK_ENTER) { // Q pour le clavier anglais 
+            restartPressed = true;
+        }
+        if (code == KeyEvent.VK_SHIFT) {
+            run = true;
         }
 
         // DEBUG 
@@ -65,6 +71,12 @@ public class KeyHandler implements KeyListener{
         if(code == KeyEvent.VK_D){ // D pour le clavier anglais
             noKeyMovePressed = true;
             rightPressed = false;
+        }
+        if (code == KeyEvent.VK_ENTER) { // Q pour le clavier anglais 
+            restartPressed = false;
+        }
+        if (code == KeyEvent.VK_SHIFT) {
+            run = false;
         }
     }
 

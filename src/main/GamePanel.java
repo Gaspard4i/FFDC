@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     // SYSTEM
     TileManager tileM = new TileManager(this);
-    KeyHandler keyH = new KeyHandler();
+    KeyHandler keyH = Main.keyH;
 
     // SOUND & MUSIC
     Sound se = new Sound();
@@ -49,7 +49,7 @@ public class GamePanel extends JPanel implements Runnable{
     public UI ui = new UI(this);
     
     // GAME THREAD
-    Thread gameTrThread;
+    public Thread gameThread;
     
     // PLAYER & OBJECT
     public Player player = new Player(this, keyH);
@@ -79,11 +79,15 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void startGameThread(){
-
-        gameTrThread = new Thread(this);
-        gameTrThread.start();
+        gameThread = new Thread(this);
+        gameThread.start();
     }
 
+
+
+    public void pauseGame(){
+        
+    }
 
     @Override
     // DELTA LOOP METHOD
@@ -96,7 +100,7 @@ public class GamePanel extends JPanel implements Runnable{
         long timer = 0;
         int drawCount = 0;
         
-        while (gameTrThread != null) {
+        while (gameThread != null) {
             
             currentTime = System.nanoTime();
 
@@ -164,6 +168,12 @@ public class GamePanel extends JPanel implements Runnable{
 
         // END
         g2.dispose();
+    }
+
+    public void restartGame(){
+        this.gameThread = new Thread();
+        this.player = new Player(this, this.keyH);
+        this.setupGame();   
     }
 
     public void playMusic(int i){

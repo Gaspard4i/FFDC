@@ -82,6 +82,15 @@ public class TileManager {
         setup(43, "table01", true); // table
 
         setup(44, "hut", true); // hut
+
+        setup(45, "water00", false); // fake water
+
+        setup(46, "water05", false); // fake water
+
+        setup(47, "wall", false); // fake wall
+
+        setup(48, "tree", false); // fake tree
+        
     }
 
     public void setup(int index, String imagePath, boolean collison){

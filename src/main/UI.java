@@ -17,7 +17,7 @@ public class UI {
     public String message = "";
     public int messageCounter = 0;
     public boolean gameFinished = false;
-    double playTime = 0.0;
+    public double playTime = 0.0;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
 
     
@@ -78,8 +78,7 @@ public class UI {
 
 
             // END
-            gp.gameTrThread = null;
-
+            gp.gameThread = null;
 
         }else{
 
@@ -87,6 +86,14 @@ public class UI {
             g2.setColor(Color.white);
             g2.drawImage(keyImg, gp.tileSize/2, gp.tileSize/2,gp.tileSize, gp.tileSize, null);
             g2.drawString("x " + gp.player.hasKey, 74, 65);
+            
+
+            // RESTART
+            // if(gp.keyH.restartPressed){
+            //     gp.restartGame();
+            //     playTime = 0.0;
+            //     g2.drawString("Restarted", gp.tileSize*11,  300);
+            // }
             
             // TIME 
             playTime += (double) 1/60;

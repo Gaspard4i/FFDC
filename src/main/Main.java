@@ -3,6 +3,8 @@ package main;
 import javax.swing.JFrame;
 
 public class Main {
+    
+    public static KeyHandler keyH = new KeyHandler();
     public static void main(String[] args) {
         
 
@@ -21,6 +23,5 @@ public class Main {
 
         gamePanel.setupGame();
         gamePanel.startGameThread();
-
     }
 }

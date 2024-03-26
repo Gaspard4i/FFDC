@@ -19,6 +19,8 @@ public class Player extends Entity{
     public int hasKey = 0;
     public boolean boy = true;
     public boolean cat = false;
+    public boolean speedUp = false;
+    public boolean hasBoots = false;
 
 
     public Player(GamePanel gp, KeyHandler keyH){
@@ -98,34 +100,34 @@ public class Player extends Entity{
         stay5 = setup("boy_stay_5");
         stay6 = setup("boy_stay_6");
         }
-    // if (cat) {
-    //         // LEFT
+    if (cat) {
+            // LEFT
 
-    //     left1 = setup("cat_left_1");
-    //     left2 = setup("cat_left_2");
-    //     left3 = setup("cat_left_3");
-    //     left4 = setup("cat_left_4");
-    //     left5 = setup("cat_left_5");
-    //     left6 = setup("cat_left_6");
+        left1 = setup("cat_left_1");
+        left2 = setup("cat_left_2");
+        left3 = setup("cat_left_3");
+        left4 = setup("cat_left_4");
+        left5 = setup("cat_left_5");
+        left6 = setup("cat_left_6");
         
-    //     // RIGHT
+        // RIGHT
 
-    //     right1 = setup("cat_right_1");
-    //     right2 = setup("cat_right_2");
-    //     right3 = setup("cat_right_3");
-    //     right4 = setup("cat_right_4");
-    //     right5 = setup("cat_right_5");
-    //     right6 = setup("cat_right_6");
+        right1 = setup("cat_right_1");
+        right2 = setup("cat_right_2");
+        right3 = setup("cat_right_3");
+        right4 = setup("cat_right_4");
+        right5 = setup("cat_right_5");
+        right6 = setup("cat_right_6");
 
-    //     // STAY
+        // STAY
 
-    //     stay1 = setup("cat_stay_1");
-    //     stay2 = setup("cat_stay_2");
-    //     stay3 = setup("cat_stay_3");
-    //     stay4 = setup("cat_stay_4");
-    //     stay5 = setup("cat_stay_5");
-    //     stay6 = setup("cat_stay_6");
-    // }
+        stay1 = setup("cat_stay_1");
+        stay2 = setup("cat_stay_2");
+        stay3 = setup("cat_stay_3");
+        stay4 = setup("cat_stay_4");
+        stay5 = setup("cat_stay_5");
+        stay6 = setup("cat_stay_6");
+    }
 
     }
     
@@ -161,6 +163,14 @@ public class Player extends Entity{
                 direction = "right";
             }else if (keyH.noKeyMovePressed == true) {
                 direction = "stay";
+            }
+            if (keyH.run && !speedUp && hasBoots) {
+                speed += 3;
+                speedUp = true;
+
+            }else if(!keyH.run && speedUp && hasBoots){
+                speed -= 3;
+                speedUp = false;
             }
 
             // CHECK TILE COLLISON
@@ -239,23 +249,27 @@ public class Player extends Entity{
                 break;
                 case "Boots":
                     gp.playSE(1);
-                    speed += 2;
+                    hasBoots = true;
                     gp.obj[i] = null;
                     gp.ui.showMessage("You got boots ! Speed up !");
 
 
                     break;
                 case "Chest":
-                if(!gp.ui.gameFinished){
-                    gp.stopMusic();
-                    gp.playSE(3);
-                    gp.ui.gameFinished = true;
-            }
+                if (hasKey > 0) {
+                    if(!gp.ui.gameFinished){
+                        gp.stopMusic();
+                        gp.playSE(3);
+                        gp.ui.gameFinished = true;
+                    }
+                    gp.ui.showMessage("You won !");
+                    hasKey--;
+                    gp.ui.showMessage("You opened the chest !");
 
-                gp.ui.showMessage("You won !");
-                
+                }else{
+                    gp.ui.showMessage("You need a key !");
 
-
+                }
                 break;
                 default:
                     break;
