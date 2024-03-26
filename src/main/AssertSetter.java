@@ -2,15 +2,25 @@ package main;
 
 import object.*;
 
+/**
+ * The AssertSetter class is responsible for setting up game objects in the game world.
+ */
 public class AssertSetter {
     int counter = 8;
     GamePanel gp;
 
+    /**
+     * Constructs an AssertSetter object with the specified GamePanel.
+     *
+     * @param gp The GamePanel instance.
+     */
     public AssertSetter(GamePanel gp){
-
         this.gp = gp;
     }
 
+    /**
+     * Sets up the initial game objects in the game world.
+     */
     public void setObject(){
 
         gp.obj[0] = new OBJ_Key(gp);
@@ -39,13 +49,14 @@ public class AssertSetter {
 
         gp.obj[6] = new OBJ_Boots(gp);
         gp.obj[6].worldX = 37 * gp.tileSize;
-        gp.obj[6] .worldY = 42 * gp.tileSize;
-
+        gp.obj[6] .worldY = 42 * gp.tileSize;  
         
     }
 
+    /**
+     * Sets the end chest object in the game world if the game is finished.
+     */
     public void setEndChest(){
-    
         if(gp.ui.gameFinished){
             gp.obj[7] = new OBJ_Chest(gp);
             gp.obj[7].worldX = 23 * gp.tileSize;

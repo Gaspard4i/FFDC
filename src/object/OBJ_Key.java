@@ -6,10 +6,18 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 
+/**
+ * The OBJ_Key class represents a key object in the game.
+ */
 public class OBJ_Key extends SuperObject {
 
     GamePanel gp;
 
+    /**
+     * Constructs a new OBJ_Key object with the specified GamePanel.
+     *
+     * @param gp The GamePanel object.
+     */
     public OBJ_Key(GamePanel gp){
         this.gp = gp;
         
@@ -23,5 +31,4 @@ public class OBJ_Key extends SuperObject {
             e.printStackTrace();        
         }
     }
-    
 }

@@ -8,15 +8,28 @@ import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
-import main.*;
+import main.GamePanel;
+import main.UtilityTool;
 
+/**
+ * Manages tiles in the game world, including loading tile images and maps.
+ */
 public class TileManager {
     
+    /** Reference to the game panel. */
     GamePanel gp;
+    
+    /** Array of tiles. */
     public Tile[] tile;
+    
+    /** 2D array representing the map of tile numbers. */
     public int mapTileNum[][];
-
-        public TileManager(GamePanel gp){
+    
+    /**
+     * Constructs a TileManager with a reference to the game panel.
+     * @param gp The game panel.
+     */
+    public TileManager(GamePanel gp){
         this.gp = gp;
 
         tile = new Tile[50]; // number of tile we need
@@ -25,6 +38,9 @@ public class TileManager {
         loadMap("/res/maps/WorldMap5.txt");
     }
 
+    /**
+     * Loads tile images from resources.
+     */
     public void getTileImage(){
 
         setup(0, "grass00", false); // simple grass
@@ -92,21 +108,31 @@ public class TileManager {
         setup(48, "tree", false); // fake tree
     }
 
-    public void setup(int index, String imagePath, boolean collison){
+    /**
+     * Sets up a tile with the given index, image path, and collision property.
+     * @param index The index of the tile.
+     * @param imagePath The path to the tile image.
+     * @param collision Whether the tile has collision properties.
+     */
+    public void setup(int index, String imagePath, boolean collision){
 
         UtilityTool uTool = new UtilityTool();
 
         try {
                 tile[index] = new Tile();
-                tile[index] .image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/"+imagePath+".png"));
-                tile[index] .image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
-                tile[index] .collison = collison;
+                tile[index].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/"+imagePath+".png"));
+                tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+                tile[index].collision = collision;
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Loads the map from the specified file path.
+     * @param mapPath The path to the map file.
+     */
     public void loadMap(String mapPath){
         try {
 
@@ -144,6 +170,10 @@ public class TileManager {
         }
     }
 
+    /**
+     * Draws the tiles in the game world.
+     * @param g2 The Graphics2D object to draw on.
+     */
     public void draw(Graphics2D g2){
 
         int worldCol = 0;
@@ -162,16 +192,15 @@ public class TileManager {
                 && worldX - gp.tileSize< gp.player.worldX + gp.player.screenX
                 && worldY + gp.tileSize > gp.player.worldY - gp.player.screenY
                 && worldY - gp.tileSize< gp.player.worldY + gp.player.screenY) { // create a boundary to draw only the tiles around the player
-
-                g2.drawImage(tile[tileNum].image, screenX, screenY, null) ;
-            }
-            worldCol++;
-
-            if (worldCol == gp.maxWorldCol) {
-                worldCol = 0;
-                worldRow++;
+                    g2.drawImage(tile[tileNum].image, screenX, screenY, null) ;
+                }
+                worldCol++;
+        
+                if (worldCol == gp.maxWorldCol) {
+                    worldCol = 0;
+                    worldRow++;
+                }
             }
         }
     }
-}
-
+        
