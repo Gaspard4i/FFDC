@@ -17,7 +17,7 @@ public class Music {
      */
     public Music(){
 
-        musicURL [0] = getClass().getResource ("/res/sound/BlueBoyAdventure.wav") ;
+        musicURL [0] = getClass().getResource ("/sound/BlueBoyAdventure.wav") ;
 
     }
 

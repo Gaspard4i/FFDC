@@ -35,7 +35,7 @@ public class TileManager {
         tile = new Tile[50]; // number of tile we need
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldCol]; // map
         getTileImage();
-        loadMap("/res/maps/WorldMap5.txt");
+        loadMap("/maps/WorldMap5.txt");
     }
 
     /**
@@ -120,7 +120,7 @@ public class TileManager {
 
         try {
                 tile[index] = new Tile();
-                tile[index].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/"+imagePath+".png"));
+                tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/"+imagePath+".png"));
                 tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
                 tile[index].collision = collision;
 

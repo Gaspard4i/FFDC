@@ -25,7 +25,7 @@ Finn Found Da Sword is a 2D adventure game inspired by the Adventure Time univer
 - Use keys to unlock doors and progress through the game.
 - Find the treasure chest and unlock it with a key to win the game.
 
-### ![Key](./res/objects/Key.png) Notes: 
+### ![Key](./objects/Key.png) Notes: 
 - The game is a speedrun-style adventure.
 - Graphics feature custom sprites of Finn created by Gaspard Catry.
 - The map layout is fixed and not randomly generated.
@@ -52,6 +52,11 @@ To generate the Pandoc HTML output, use the following command:
 4. Run the game:
     ```bash
     java -cp ./bin:./res main.Main
+    ```
+
+5. Run the game with the run command:
+    ```bash
+    bash ./run
     ```
 
 ## Credits:

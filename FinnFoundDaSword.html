@@ -8,18 +8,10 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
+    ul.task-list{list-style: none;}
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="./css/style.css" />
@@ -63,8 +55,7 @@ Goal:</h3>
 <li>Find the treasure chest and unlock it with a key to win the
 game.</li>
 </ul>
-<h3 id="key-notes"><img src="./res/objects/Key.png" alt="Key" />
-Notes:</h3>
+<h3 id="key-notes"><img src="./objects/Key.png" alt="Key" /> Notes:</h3>
 <ul>
 <li>The game is a speedrun-style adventure.</li>
 <li>Graphics feature custom sprites of Finn created by Gaspard
@@ -84,12 +75,14 @@ src="./res/readme/finnrunright.gif" alt="FinnRun" /></h2>
 </ul>
 <h3 id="instructions">Instructions:</h3>
 <ol type="1">
-<li>Clone the repository to your local machine.</li>
-<li>Navigate to the project directory.</li>
-<li>Compile the Java files:
-<code>bash     javac -d ./bin ./src/*.java</code></li>
-<li>Run the game:
-<code>bash     java -cp ./bin:./res main.Main</code></li>
+<li><p>Clone the repository to your local machine.</p></li>
+<li><p>Navigate to the project directory.</p></li>
+<li><p>Compile the Java files:
+<code>bash     javac -d ./bin ./src/*.java</code></p></li>
+<li><p>Run the game:
+<code>bash     java -cp ./bin:./res main.Main</code></p></li>
+<li><p>Run the game with the run command:
+<code>bash     bash ./run</code></p></li>
 </ol>
 <h2 id="credits">Credits:</h2>
 <ul>
