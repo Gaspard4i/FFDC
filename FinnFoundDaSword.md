@@ -12,7 +12,7 @@ Finn Found Da Sword is a 2D adventure game inspired by the Adventure Time univer
 
 ## How to Play ![FinnStay](./res/readme/finnstay.gif)
 
-### ![Boots](./res/objects/Boots.png) Controls: 
+### ![Boots](./res/objects/boots.png) Controls: 
 - Movement: ZQSD or arrow keys
 - Toggle Debug Mode: T (Press once to show player coordinates and latency, press again to hide)
 - Debugging:
@@ -20,12 +20,12 @@ Finn Found Da Sword is a 2D adventure game inspired by the Adventure Time univer
   - Show Latency: Displayed in the terminal (when debug mode is toggled)
   - Show Player Coordinates: Displayed in the terminal (when debug mode is toggled)
 
-### ![Chest](./res/objects/Chest.png)  Goal: 
+### ![Chest](./res/objects/chest.png)  Goal: 
 - Explore the world to find keys that unlock doors.
 - Use keys to unlock doors and progress through the game.
 - Find the treasure chest and unlock it with a key to win the game.
 
-### ![Key](./objects/Key.png) Notes: 
+### ![Key](./res/objects/key.png) Notes: 
 - The game is a speedrun-style adventure.
 - Graphics feature custom sprites of Finn created by Gaspard Catry.
 - The map layout is fixed and not randomly generated.
@@ -39,11 +39,7 @@ To generate the Pandoc HTML output, use the following command:
   ```bash pandoc FinnFoundDaSword.md -o FinnFoundDaSword.html --css=./css/style.css --standalone
   ```
   
-### Prerequisites:
-- Java Development Kit (JDK) installed on your system
-
-### Instructions:
-1. Clone the repository to your local machine.
+### Prerequisites:objectsur local machine.
 2. Navigate to the project directory.
 3. Compile the Java files:
     ```bash
