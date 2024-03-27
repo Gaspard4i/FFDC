@@ -1,0 +1,67 @@
+/* Styles for README.md converted HTML */
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  color: #feffff;
+  background-color: #007dc7;
+}
+
+h1, h2 {
+  color: #101e29;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+h3 img {
+  width: 48px;
+  height: 48px;
+}
+
+p, ul, ol {
+  margin-bottom: 20px;
+}
+
+ul, ol {
+  margin-left: 20px;
+}
+
+code {
+  background-color: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  display: block;
+  font-family: Menlo, Monaco, monospace;
+  margin-bottom: 15px;
+  padding: 10px;
+  white-space: pre-wrap;
+}
+
+a {
+  color: #85f5e5;
+  text-decoration: none;
+  border: 1px solid #feffff;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+a:hover {
+  color: #feffff;
+}
+
+code {
+  background-color: #9ad47d;
+  border-color: #9ad47d;
+  color: #4b9620;
+}
