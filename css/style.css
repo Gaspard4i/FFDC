@@ -11,7 +11,6 @@ body {
   background-color: #007dc7;
 }
 
-
 h1, h2 {
   color: #101e29;
 }
@@ -54,8 +53,11 @@ a {
   color: #85f5e5;
   text-decoration: none;
   border: 1px solid #feffff;
-  padding: 5px;
+  padding: 2px;
   border-radius: 3px;
+
+
+
 }
 
 a:hover {
@@ -67,3 +69,14 @@ code {
   border-color: #9ad47d;
   color: #4b9620;
 }
+
+ul img {
+  margin-left: 150px ;
+  width: 150px;
+  border-color: none;
+}
+ul li a[href="https://www.instagram.com/gaspard4i/"]{
+  border: none;
+  border-color:none;
+}
+

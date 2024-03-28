@@ -7,7 +7,7 @@ Finn Found Da Chest is a 2D adventure game inspired by the Adventure Time univer
 - [Installation](#installation)
 - [Generating Pandoc](#generating-pandoc)
 - [Credits](#credits)
-- [Author & GitLab Repository](#author--gitlab-repository)
+- [Author & Links](#author--links)
 
 
 ## How to Play ![FinnStay](./res/readme/finnstay.gif)
@@ -60,7 +60,9 @@ To generate the Pandoc HTML output, use the following command:
 - Additional code and modifications by Gaspard Catry
 
 
-## Author & GitLab Repository
+## Author & Links
 - Author: Gaspard Catry
 - [Link to GitLab Repository](https://gitlab.univ-lille.fr/gaspard.catry.etu)
+- My instagram : 
+[![Instagram](./res/css-image/qr-code.png)](https://www.instagram.com/gaspard4i/)
 
