@@ -1,14 +1,20 @@
 body {
   font-family: Arial, sans-serif;
+  font-size: large;
   line-height: 1.6;
-  margin: 0 auto;
+  margin: 20px auto; /* Ajout de marges en haut et en bas */
   max-width: 800px;
   padding: 20px;
   color: #feffff;
-  /* background-image: url("../res/css-image/adventuretime.jpg");
-  background-size: cover; */
+  background-image: url("../res/css-image/sky.png");
+  background-size:cover;
   background-repeat: no-repeat;
-  background-color: #007dc7;
+}
+body>section{
+  padding: 20px;
+  border: 2px solid transparent;
+  border-radius: 15px; /* Arrondi les coins de la bordure */
+  background-color: rgb(0,125,189,0.5);
 }
 
 h1, h2 {
@@ -34,13 +40,19 @@ p, ul, ol {
   margin-bottom: 20px;
 }
 
-ul, ol {
+section>ul, ol {
   margin-left: 20px;
+}
+
+#table-of-contents li{
+  font-family:monospace;
+  font-size: 20px;
+  color: #85f5e5;
 }
 
 code {
   background-color: none;
-  border: 1px solid #ccc;
+  border: 1px solid #85f5e5;
   border-radius: 3px;
   display: block;
   font-family: Menlo, Monaco, monospace;
@@ -52,11 +64,9 @@ code {
 a {
   color: #85f5e5;
   text-decoration: none;
-  border: 1px solid #feffff;
+  border: 1px solid #85f5e5;
   padding: 2px;
   border-radius: 3px;
-
-
 
 }
 
@@ -75,8 +85,9 @@ ul img {
   width: 150px;
   border-color: none;
 }
-ul li a[href="https://www.instagram.com/gaspard4i/"]{
+ul li a[href="https://linktr.ee/Gaspard4i"]{
   border: none;
   border-color:none;
+  display:block; 
 }
 

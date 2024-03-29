@@ -8,20 +8,31 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
-<h1 id="finn-found-da-chest">Finn Found Da Chest</h1>
+<section id="finn-found-da-chest" class="level1">
+<h1>Finn Found Da Chest</h1>
+<p><img src="./res/readme/finnrunright.gif" /></p>
 <p>Finn Found Da Chest is a 2D adventure game inspired by the Adventure
 Time universe. In this game, players control Finn the Human as he
 explores a mysterious world filled with obstacles and challenges.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+<section id="table-of-contents" class="level2">
+<h2>Table of Contents</h2>
 <ul>
 <li><a href="#how-to-play">How to Play</a></li>
 <li><a href="#installation">Installation</a></li>
@@ -29,33 +40,37 @@ explores a mysterious world filled with obstacles and challenges.</p>
 <li><a href="#credits">Credits</a></li>
 <li><a href="#author--links">Author &amp; Links</a></li>
 </ul>
-<h2 id="how-to-play-finnstay">How to Play <img
-src="./res/readme/finnstay.gif" alt="FinnStay" /></h2>
-<h3 id="boots-controls"><img src="./res/objects/boots.png"
-alt="Boots" /> Controls:</h3>
+</section>
+<section id="how-to-play-finnstay" class="level2">
+<h2>How to Play <img src="./res/readme/finnstay.gif"
+alt="FinnStay" /></h2>
+<section id="boots-controls" class="level3">
+<h3><img src="./res/objects/boots000.png" alt="Boots" /> Controls:</h3>
 <ul>
 <li>Movement: ZQSD or arrow keys</li>
 <li>Toggle Debug Mode: T (Press once to show player coordinates and
 latency, press again to hide)</li>
 <li>Debugging:
 <ul>
-<li>Show FPS: Displayed in the terminal</li>
+<li>Show FPS while playing: Displayed in the terminal</li>
 <li>Show Latency: Displayed in the terminal (when debug mode is
 toggled)</li>
 <li>Show Player Coordinates: Displayed in the terminal (when debug mode
 is toggled)</li>
 </ul></li>
 </ul>
-<h3 id="chest-goal"><img src="./res/objects/chest.png" alt="Chest" />
-Goal:</h3>
+</section>
+<section id="chest-goal" class="level3">
+<h3><img src="./res/objects/chest000.png" alt="Chest" /> Goal:</h3>
 <ul>
 <li>Explore the world to find keys that unlock doors.</li>
 <li>Use keys to unlock doors and progress through the game.</li>
 <li>Find the treasure chest and unlock it with a key to win the
 game.</li>
 </ul>
-<h3 id="key-notes"><img src="./res/objects/key.png" alt="Key" />
-Notes:</h3>
+</section>
+<section id="key-notes" class="level3">
+<h3><img src="./res/objects/key000.png" alt="Key" /> Notes:</h3>
 <ul>
 <li>The game is a speedrun-style adventure.</li>
 <li>Graphics feature custom sprites of Finn created by Gaspard
@@ -64,14 +79,18 @@ Catry.</li>
 <li>Additional features and improvements may be implemented in the
 future, but no updates are planned at this time.</li>
 </ul>
-<h2 id="installation-finnrun">Installation: <img
-src="./res/readme/finnrunright.gif" alt="FinnRun" /></h2>
-<h2 id="generating-pandoc">Generating Pandoc</h2>
+</section>
+</section>
+<section id="installation" class="level2">
+<h2>Installation:</h2>
+</section>
+<section id="generating-pandoc" class="level2">
+<h2>Generating Pandoc</h2>
 <p>To generate the Pandoc HTML output, use the following command:</p>
-<p><code>bash pandoc FinnFoundDaChest.md -o FinnFoundDaChest.html --css=./css/style.css --standalone</code></p>
-<h3 id="prerequisitesobjectsur-local-machine.">Prerequisites:objectsur
-local machine.</h3>
-<ol start="2" type="1">
+<p><code>bash pandoc FinnFoundDaChest.md -o FinnFoundDaChest.html --css=./css/style.css --standalone --section-divs</code></p>
+<section id="prerequisitesobjectsur-local-machine." class="level3">
+<h3>Prerequisites:objectsur local machine.</h3>
+<ol type="1">
 <li><p>Navigate to the project directory.</p></li>
 <li><p>Compile the Java files:
 <code>bash     javac -d ./bin ./src/*.java</code></p></li>
@@ -80,19 +99,26 @@ local machine.</h3>
 <li><p>Run the game with the run command:
 <code>bash     bash ./run</code></p></li>
 </ol>
-<h2 id="credits">Credits:</h2>
+</section>
+</section>
+<section id="credits" class="level2">
+<h2>Credits:</h2>
 <ul>
 <li>Game development based on tutorials by RyiSnow: <a
 href="https://www.youtube.com/@RyiSnow">YouTube</a></li>
 <li>Additional code and modifications by Gaspard Catry</li>
 </ul>
-<h2 id="author-links">Author &amp; Links</h2>
+</section>
+<section id="author-links" class="level2">
+<h2>Author &amp; Links</h2>
 <ul>
 <li>Author: Gaspard Catry</li>
 <li><a href="https://gitlab.univ-lille.fr/gaspard.catry.etu">Link to
 GitLab Repository</a></li>
-<li>My instagram : <a href="https://www.instagram.com/gaspard4i/"><img
-src="./res/css-image/qr-code.png" alt="Instagram" /></a></li>
+<li>Linktree <a href="https://linktr.ee/Gaspard4i"><img
+src="./res/css-image/qrcode.png" alt="Linktree" /></a></li>
 </ul>
+</section>
+</section>
 </body>
 </html>
