@@ -24,7 +24,7 @@ public class Main {
         window.setResizable(false);
         
         // Set the title of the window
-        window.setTitle("Project 4i: 2D Game");
+        window.setTitle("FinnFoundDaChest");
         
         // Create a new GamePanel instance
         GamePanel gamePanel = new GamePanel();

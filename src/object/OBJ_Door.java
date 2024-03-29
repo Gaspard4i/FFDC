@@ -24,7 +24,7 @@ public class OBJ_Door extends SuperObject{
         name = "Door";
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/door.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/res/objects/door000.png"));
             uTool.scaleImage(image, gp.tileSize, gp.tileSize);
 
         } catch (IOException e) {

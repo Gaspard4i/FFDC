@@ -23,7 +23,7 @@ public class OBJ_Boots extends SuperObject {
 
         try {
             // Load the image for the boots object
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/boots.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/res/objects/boots000.png"));
             // Scale the image to match the tile size
             uTool.scaleImage(image, gp.tileSize, gp.tileSize);
 

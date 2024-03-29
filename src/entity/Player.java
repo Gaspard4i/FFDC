@@ -127,7 +127,7 @@ public class Player extends Entity{
 
         try {
 
-            image = ImageIO.read(getClass().getResourceAsStream("/player/walking_sprites/boy/" + imageName + ".png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy/" + imageName + ".png"));
             image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
 
         } catch (IOException e) {

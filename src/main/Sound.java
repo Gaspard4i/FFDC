@@ -16,10 +16,10 @@ public class Sound {
      */
     public Sound(){
         // Initialize sound URLs for different sound effects
-        soundURL[0] = getClass().getResource("/sound/coin.wav");
-        soundURL[1] = getClass().getResource("/sound/powerup.wav");
-        soundURL[2] = getClass().getResource("/sound/unlock.wav");
-        soundURL[3] = getClass().getResource("/sound/fanfare.wav");
+        soundURL[0] = getClass().getResource("/res/sound/coin.wav");
+        soundURL[1] = getClass().getResource("/res/sound/powerup.wav");
+        soundURL[2] = getClass().getResource("/res/sound/unlock.wav");
+        soundURL[3] = getClass().getResource("/res/sound/fanfare.wav");
     }
 
     /**

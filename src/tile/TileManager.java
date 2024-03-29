@@ -32,10 +32,10 @@ public class TileManager {
     public TileManager(GamePanel gp){
         this.gp = gp;
 
-        tile = new Tile[50]; // number of tile we need
+        tile = new Tile[100]; // number of tile we need
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldCol]; // map
         getTileImage();
-        loadMap("/maps/WorldMap5.txt");
+        loadMap("/res/maps/WorldMap4.txt");
     }
 
     /**
@@ -43,19 +43,19 @@ public class TileManager {
      */
     public void getTileImage(){
 
-        setup(0, "grass00", false); // simple grass
-        setup(1, "grass01", false); // simple grass
-        setup(2, "grass00", false); // simple grass
-        setup(3, "grass00", false); // simple grass
-        setup(4, "grass00", false); // simple grass
-        setup(5, "grass00", false); // simple grass
-        setup(6, "grass00", false); // simple grass
-        setup(7, "grass00", false); // simple grass
-        setup(8, "grass00", false); // simple grass
-        setup(9, "grass00", false); // simple grass     
+        setup(0, "grass001", false); // simple grass
+        setup(1, "grass001", false); // simple grass
+        setup(2, "grass001", false); // simple grass
+        setup(3, "grass001", false); // simple grass
+        setup(4, "grass001", false); // simple grass
+        setup(5, "grass001", false); // simple grass
+        setup(6, "grass001", false); // simple grass
+        setup(7, "grass001", false); // simple grass
+        setup(8, "grass001", false); // simple grass
+        setup(9, "grass001", false); // simple grass     
 
-        setup(10, "grass00", false); // simple grass
-        setup(11, "grass01", false); // grass
+        setup(10, "grass001", false); // simple grass
+        setup(11, "grass000", false); // grass
 
         setup(12, "water00", true); // water
         setup(13, "water01", true); // water
@@ -73,39 +73,39 @@ public class TileManager {
         setup(25, "water13", true); // water
         
         
-        setup(26, "road00", false); // road
-        setup(27, "road01", false); // road
-        setup(28, "road02", false); // road
-        setup(29, "road03", false); // road
-        setup(30, "road04", false); // road
-        setup(31, "road05", false); // road
-        setup(32, "road06", false); // road
-        setup(33, "road07", false); // road
-        setup(34, "road08", false); // road
-        setup(35, "road09", false); // road
-        setup(36, "road10", false); // road
-        setup(37, "road11", false); // road
-        setup(38, "road12", false); // road
+        setup(26, "road000", false); // road
+        setup(27, "road001", false); // road
+        setup(28, "road002", false); // road
+        setup(29, "road003", false); // road
+        setup(30, "road004", false); // road
+        setup(31, "road005", false); // road
+        setup(32, "road006", false); // road
+        setup(33, "road007", false); // road
+        setup(34, "road008", false); // road
+        setup(35, "road009", false); // road
+        setup(36, "road010", false); // road
+        setup(37, "road011", false); // road
+        setup(38, "road012", false); // road
 
         setup(39, "earth", false); // earth
 
-        setup(40, "wall", true); // wall
+        setup(40, "wall000", true); // wall
 
-        setup(41, "tree", true); // tree
+        setup(41, "tree000", true); // tree
 
         setup(42, "floor01", false); // floor
 
         setup(43, "table01", true); // table
 
-        setup(44, "hut", true); // hut
+        setup(44, "hut000", true); // hut
 
         setup(45, "water00", false); // fake water
 
         setup(46, "water05", false); // fake water
 
-        setup(47, "wall", false); // fake wall
+        setup(47, "wall001", false); // fake wall
 
-        setup(48, "tree", false); // fake tree
+        setup(48, "tree001", false); // fake tree
     }
 
     /**
@@ -120,7 +120,7 @@ public class TileManager {
 
         try {
                 tile[index] = new Tile();
-                tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/"+imagePath+".png"));
+                tile[index].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/"+imagePath+".png"));
                 tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
                 tile[index].collision = collision;
 

@@ -23,7 +23,7 @@ public class OBJ_Chest extends SuperObject {
 
         try {
             // Load the image for the chest object
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/chest.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/res/objects/chest000.png"));
             // Scale the image to match the tile size
             uTool.scaleImage(image, gp.tileSize, gp.tileSize);
 
