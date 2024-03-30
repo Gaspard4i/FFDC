@@ -35,7 +35,7 @@ public class TileManager {
         tile = new Tile[100]; // number of tile we need
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldCol]; // map
         getTileImage();
-        loadMap("/res/maps/WorldMapTest.txt");
+        loadMap("/res/maps/WorldMapAllTree.txt");
     }
 
     /**
