@@ -97,12 +97,12 @@ public class GamePanel extends JPanel implements Runnable {
         gameThread.start();
     }
 
-    /**
-     * Pauses the game.
-     */
-    public void pauseGame() {
-        // Implement pause logic here
-    }
+    // /**
+    //  * Pauses the game.
+    //  */
+    // public void pauseGame() {
+    //     // TODO Implement pause logic here
+    // }
     @Override
     /**
      * The main run loop of the game.
@@ -176,7 +176,7 @@ public class GamePanel extends JPanel implements Runnable {
         player.draw(g2);
         
         // UI 
-        ui.draw(g2);
+        ui.draw(g2);    
 
         // DEBUG
         if (keyH.checkDrawTime) {
@@ -211,6 +211,9 @@ public class GamePanel extends JPanel implements Runnable {
         music.setFile(i);
         music.play();
         music.loop();
+    }
+    public void resumeMusic(){
+        music.play();
     }
 
     /**

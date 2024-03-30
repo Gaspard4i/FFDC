@@ -14,6 +14,7 @@ public class KeyHandler implements KeyListener {
 
     // DEBUG
     public boolean checkDrawTime = false;
+    public boolean musicOn = true;
 
     /**
      * Constructs a new KeyHandler object with the specified GamePanel.
@@ -68,6 +69,15 @@ public class KeyHandler implements KeyListener {
             case KeyEvent.VK_T:
                 // Toggle draw time debug mode
                 checkDrawTime = !checkDrawTime;
+                break;
+            case KeyEvent.VK_M:
+                // Toggle Music
+                musicOn = !musicOn;
+                if (musicOn) {
+                    gp.resumeMusic();
+                }else{
+                    gp.stopMusic();
+                }
                 break;
             default:
                 break;

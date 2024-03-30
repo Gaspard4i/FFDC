@@ -4,8 +4,7 @@
 Finn Found Da Chest is a 2D adventure game inspired by the Adventure Time universe. In this game, players control Finn the Human as he explores a mysterious world filled with obstacles and challenges.
 
 ## Table of Contents
-- [How to Play](#how-to-play)
-- [Installation](#installation)
+- [How to Play](#how-to-play-![FinnStay])
 - [Generating Pandoc](#generating-pandoc)
 - [Credits](#credits)
 - [Author & Links](#author--links)
@@ -31,8 +30,6 @@ Finn Found Da Chest is a 2D adventure game inspired by the Adventure Time univer
 - Graphics feature custom sprites of Finn created by Gaspard Catry.
 - The map layout is fixed and not randomly generated.
 - Additional features and improvements may be implemented in the future, but no updates are planned at this time.
-
-## Installation:
 
 ## Generating Pandoc
 To generate the Pandoc HTML output, use the following command:
