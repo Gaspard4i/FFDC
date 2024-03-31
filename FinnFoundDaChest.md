@@ -14,6 +14,7 @@ Finn Found Da Chest is a 2D adventure game inspired by the Adventure Time univer
 
 ### ![Boots](./res/objects/boots000.png) Controls: 
 - Movement: ZQSD or arrow keys
+- Toggle in-game Music  : M (Press once to stop, press again to play)
 - Toggle Debug Mode: T (Press once to show player coordinates and latency, press again to hide)
 - Debugging:
   - Show FPS while playing: Displayed in the terminal

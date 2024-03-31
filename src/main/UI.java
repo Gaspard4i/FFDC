@@ -12,7 +12,7 @@ import object.OBJ_Key;
  * The UI class handles user interface elements in the game.
  */
 public class UI {
-    
+    Graphics2D g2;
     GamePanel gp;
     Font arial_40, arial_80B;
     BufferedImage keyImg;
@@ -53,6 +53,20 @@ public class UI {
      */
     public void draw(Graphics2D g2){
         
+        this.g2 = g2 ;
+        g2.setFont(arial_40);
+
+
+        // todo use a swicth if we want
+        if (gp.gameState == gp.playState) {
+            // Do playstate stuff later  TODO
+        }
+        if (gp.gameState == gp.pauseState) {
+            drawPauseScreen();
+            playTime -= (double) 1/60;
+            
+        }
+
         if (gameFinished) {
             // Display game completion message
             drawGameCompletion(g2);
@@ -97,6 +111,8 @@ public class UI {
      * @param g2 The Graphics2D object used for drawing.
      */
     private void drawGameCompletion(Graphics2D g2) {
+
+        
         g2.setFont(arial_40);
         g2.setColor(Color.white);
 
@@ -132,5 +148,22 @@ public class UI {
 
         // Stop the game thread
         gp.gameThread = null;
+    }
+
+    public void drawPauseScreen(){
+
+        String text = "PAUSED";
+        int x = getXForCenterText(text);
+        int y = gp.screenHeight/2; 
+
+        g2.drawString(text, x, y);;
+    }
+
+    public int getXForCenterText(String text){
+        
+        int x;
+        int lenght = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        x = gp.screenWidth/2 - lenght/2;    
+        return x;
     }
 }
