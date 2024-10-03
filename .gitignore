@@ -9,72 +9,24 @@ lib/
 
 # Ignorer les fichiers de configuration
 config/
+.idea/
+.vscode/
 
-# Ignorer les fichiers temporaires
-.tmp
-
-# Ignorer les fichiers de sauvegarde
+# Ignorer les fichiers temporaires et de sauvegarde
+*.tmp
 *~
 
 # Ignorer les fichiers de dépendances téléchargés
 *.jar
 
-# Ignorer les fichiers de configuration spécifiques à l'utilisateur
-.idea/
-
 # Ignorer les fichiers de compilation ou les fichiers générés
 target/
 
-# Ignorer les fichiers de sauvegarde des éditeurs
-.vscode/
-
-# Ignorer les fichiers compilés Java
-*.class
-
-# Ignorer les fichiers binaires et les fichiers générés automatiquement
-bin/
-log/
-doc/
-lib/
-
-# Ignorer les fichiers de configuration
-config/
-
-# Ignorer les fichiers temporaires
-.tmp
-
-# Ignorer les fichiers de sauvegarde
-*~
-
-# Ignorer les fichiers de dépendances téléchargés
-*.jar
-
-# Ignorer les fichiers de configuration spécifiques à l'utilisateur
-.idea/
-
-# Ignorer les fichiers de compilation ou les fichiers générés
-target/
-
-# Ignorer les fichiers de sauvegarde des éditeurs
-.vscode/
-
-# Ignorer les fichiers de données
+# Ignorer les fichiers de données et de tests
 data/
-
-# Ignorer les fichiers de test
 test/
-
-# Ignorer les fichiers de résultats de tests
 results/
 
-# Ignorer les fichiers spécifiques au système d'exploitation Windows
-Thumbs.db
-.DS_Store
-
-
-# Ignorer les fichiers de résultats de tests
-results/
-
-# Ignorer les fichiers spécifiques au système d'exploitation Windows
+# Ignorer les fichiers spécifiques au système d'exploitation
 Thumbs.db
 .DS_Store
