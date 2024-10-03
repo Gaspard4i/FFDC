@@ -1,15 +1,14 @@
 package object;
 
+import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
 import main.GamePanel;
 
 /**
  * The OBJ_Door class represents a door object in the game.
  */
-public class OBJ_Door extends SuperObject{
+public class OBJ_Door extends SuperObject {
     
     GamePanel gp;
 
@@ -24,7 +23,7 @@ public class OBJ_Door extends SuperObject{
         name = "Door";
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/res/objects/door000.png"));
+            image = ImageIO.read(new File("resources/objects/door000.png")); // Change ici
             uTool.scaleImage(image, gp.tileSize, gp.tileSize);
 
         } catch (IOException e) {

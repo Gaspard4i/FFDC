@@ -1,13 +1,12 @@
 package tile;
 
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import javax.imageio.ImageIO;
-
 import main.GamePanel;
 import main.UtilityTool;
 
@@ -15,6 +14,8 @@ import main.UtilityTool;
  * Manages tiles in the game world, including loading tile images and maps.
  */
 public class TileManager {
+
+    private static String PATH_TILES = "resources/tiles/"; 
     
     /** Reference to the game panel. */
     GamePanel gp;
@@ -35,7 +36,7 @@ public class TileManager {
         tile = new Tile[100]; // number of tile we need
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldCol]; // map
         getTileImage();
-        loadMap("/res/maps/WorldMapAllTree.txt");
+        loadMap("resources/maps/WorldMapAllTree.txt");
     }
 
     /**
@@ -134,60 +135,46 @@ public class TileManager {
      * @param imagePath The path to the tile image.
      * @param collision Whether the tile has collision properties.
      */
-    public void setup(int index, String imagePath, boolean collision){
-
+    public void setup(int index, String imagePath, boolean collision) {
         UtilityTool uTool = new UtilityTool();
-
         try {
-                tile[index] = new Tile();
-                tile[index].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/"+imagePath+".png"));
-                tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
-                tile[index].collision = collision;
-
+            tile[index] = new Tile();
+            BufferedImage image = ImageIO.read(new File(PATH_TILES + imagePath + ".png")); // Change to File
+            tile[index].image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+            tile[index].collision = collision;
         } catch (IOException e) {
-            System.out.println("/res/tiles/"+imagePath+".png");;
+            System.out.println("Error loading image: "+ PATH_TILES + ' ' + imagePath + ".png");
             e.printStackTrace();
         }
     }
+
 
     /**
      * Loads the map from the specified file path.
      * @param mapPath The path to the map file.
      */
     public void loadMap(String mapPath){
-        try {
-
-            InputStream is = getClass().getResourceAsStream(mapPath);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
+        try (BufferedReader br = new BufferedReader(new FileReader(new File(mapPath)))) { // Use FileReader
             int col = 0;
             int row = 0;
 
             while (col < gp.maxWorldCol && row < gp.maxWorldRow) {
-
                 String line = br.readLine();
 
-                while (col < gp.maxWorldCol) {
-                    
+                if (line != null) {
                     String numbers[] = line.split(" ");
 
-                    int num = Integer.parseInt(numbers[col]);
-
-                    mapTileNum[col][row] = num;
-                    col++;
-
-                    
-                }
-                if (col == gp.maxWorldCol) {
-                    col = 0 ;
+                    while (col < gp.maxWorldCol) {
+                        int num = Integer.parseInt(numbers[col]);
+                        mapTileNum[col][row] = num;
+                        col++;
+                    }
+                    col = 0;
                     row++;
                 }
             }   
-
-            br.close(); // close the bufferedReader
-
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
@@ -195,13 +182,11 @@ public class TileManager {
      * Draws the tiles in the game world.
      * @param g2 The Graphics2D object to draw on.
      */
-    public void draw(Graphics2D g2){
-
+    public void draw(Graphics2D g2) {
         int worldCol = 0;
         int worldRow = 0;
 
         while (worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
-
             int tileNum = mapTileNum[worldCol][worldRow];
 
             int worldX = worldCol * gp.tileSize;
@@ -209,19 +194,19 @@ public class TileManager {
             int screenX = worldX - gp.player.worldX + gp.player.screenX;
             int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-            if (   worldX + gp.tileSize > gp.player.worldX - gp.player.screenX 
-                && worldX - gp.tileSize< gp.player.worldX + gp.player.screenX
+            if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX 
+                && worldX - gp.tileSize < gp.player.worldX + gp.player.screenX
                 && worldY + gp.tileSize > gp.player.worldY - gp.player.screenY
-                && worldY - gp.tileSize< gp.player.worldY + gp.player.screenY) { // create a boundary to draw only the tiles around the player
-                    g2.drawImage(tile[tileNum].image, screenX, screenY, null) ;
-                }
-                worldCol++;
-        
-                if (worldCol == gp.maxWorldCol) {
-                    worldCol = 0;
-                    worldRow++;
-                }
+                && worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
+                g2.drawImage(tile[tileNum].image, screenX, screenY, null);
+            }
+            worldCol++;
+
+            if (worldCol == gp.maxWorldCol) {
+                worldCol = 0;
+                worldRow++;
             }
         }
     }
+}
         

@@ -1,5 +1,5 @@
 # Finn Found Da Chest 
-![](./res/readme/finnrunright.gif)
+![](./resources/readme/finnrunright.gif)
 
 Finn Found Da Chest is a 2D adventure game inspired by the Adventure Time universe. In this game, players control Finn the Human as he explores a mysterious world filled with obstacles and challenges.
 
@@ -10,9 +10,9 @@ Finn Found Da Chest is a 2D adventure game inspired by the Adventure Time univer
 - [Author & Links](#author--links)
 
 
-## How to Play ![FinnStay](./res/readme/finnstay.gif)
+## How to Play ![FinnStay](./resources/readme/finnstay.gif)
 
-### ![Boots](./res/objects/boots000.png) Controls: 
+### ![Boots](./resources/objects/boots000.png) Controls: 
 - Movement: ZQSD or arrow keys
 - Toggle in-game Music  : M (Press once to stop, press again to play)
 - Toggle Debug Mode: T (Press once to show player coordinates and latency, press again to hide)
@@ -21,12 +21,12 @@ Finn Found Da Chest is a 2D adventure game inspired by the Adventure Time univer
   - Show Latency: Displayed in the terminal (when debug mode is toggled)
   - Show Player Coordinates: Displayed in the terminal (when debug mode is toggled)
 
-### ![Chest](./res/objects/chest000.png)  Goal: 
+### ![Chest](./resources/objects/chest000.png)  Goal: 
 - Explore the world to find keys that unlock doors.
 - Use keys to unlock doors and progress through the game.
 - Find the treasure chest and unlock it with a key to win the game.
 
-### ![Key](./res/objects/key000.png) Notes: 
+### ![Key](./resources/objects/key000.png) Notes: 
 - The game is a speedrun-style adventure.
 - Graphics feature custom sprites of Finn created by Gaspard Catry.
 - The map layout is fixed and not randomly generated.
@@ -46,7 +46,7 @@ To generate the Pandoc HTML output, use the following command:
     ```
 3. Run the game:
     ```bash
-    java -cp ./bin:./res main.Main
+    java -cp ./bin:./resources main.Main
     ```
 
 4. Run the game with the run command:
@@ -63,5 +63,5 @@ To generate the Pandoc HTML output, use the following command:
 - Author: Gaspard Catry
 - [Link to GitLab Repository](https://gitlab.univ-lille.fr/gaspard.catry.etu)
 - Linktree
-[![Linktree](./res/css-image/qrcode.png)](https://linktr.ee/Gaspard4i)
+[![Linktree](./resources/css-image/qrcode.png)](https://linktr.ee/Gaspard4i)
 

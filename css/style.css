@@ -6,7 +6,7 @@ body {
   max-width: 800px;
   padding: 20px;
   color: #feffff;
-  background-image: url("../res/css-image/sky.png");
+  background-image: url("../resources/css-image/sky.png");
   background-size:cover;
   background-repeat: no-repeat;
 }

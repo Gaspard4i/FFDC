@@ -1,25 +1,28 @@
 package main;
 
-import java.net.URL;
 import javax.sound.sampled.*;
+import java.io.File;
+import java.util.ArrayList;
 
 /**
  * The Sound class handles sound effects in the game.
  */
 public class Sound {
     
-    Clip clip;
-    URL soundURL[] = new URL[30];
+    private Clip clip;
+    private ArrayList<String> soundFiles;
 
     /**
-     * Constructs a new Sound object and initializes sound URLs.
+     * Constructs a new Sound object and initializes the sound file list.
      */
-    public Sound(){
-        // Initialize sound URLs for different sound effects
-        soundURL[0] = getClass().getResource("/res/sound/yay.wav");
-        soundURL[1] = getClass().getResource("/res/sound/powerup.wav");
-        soundURL[2] = getClass().getResource("/res/sound/unlock.wav");
-        soundURL[3] = getClass().getResource("/res/sound/fanfare.wav");
+    public Sound() {
+        soundFiles = new ArrayList<>();
+        
+        // Remplace les chemins par des chemins absolus ou relatifs
+        soundFiles.add("resources/sound/yay.wav");
+        soundFiles.add("resources/sound/powerup.wav");
+        soundFiles.add("resources/sound/unlock.wav");
+        soundFiles.add("resources/sound/fanfare.wav");
     }
 
     /**
@@ -27,37 +30,48 @@ public class Sound {
      *
      * @param i The index of the sound file to be played.
      */
-    public void setFile(int i){
+    public void setFile(int i) {
+        if (i < 0 || i >= soundFiles.size()) {
+            System.out.println("Index invalide : " + i);
+            return;
+        }
+        
         try {
             // Get the audio input stream for the specified sound file
-            AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
+            AudioInputStream ais = AudioSystem.getAudioInputStream(new File(soundFiles.get(i)));
             // Get a new clip
             clip = AudioSystem.getClip();
             // Open the audio input stream
             clip.open(ais);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Erreur lors du chargement du fichier audio : " + soundFiles.get(i) + '\n' + e.getMessage());
         }
     }
 
     /**
      * Starts playing the sound.
      */
-    public void play(){
-        clip.start();
+    public void play() {
+        if (clip != null) {
+            clip.start();
+        }
     }
 
     /**
      * Loops the sound continuously.
      */
-    public void loop(){
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
+    public void loop() {
+        if (clip != null) {
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        }
     }
 
     /**
      * Stops playing the sound.
      */
-    public void stop(){
-        clip.stop();
+    public void stop() {
+        if (clip != null) {
+            clip.stop();
+        }
     }
 }

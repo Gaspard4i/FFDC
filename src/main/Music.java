@@ -1,26 +1,29 @@
 package main;
 
-import java.net.URL;
-
+import java.io.File;
+import java.io.IOException;
 import javax.sound.sampled.*;
 
 /**
  * The Music class handles audio playback in the game.
  */
 public class Music {
-    
+
     Clip clip;
-    URL musicURL[] = new URL[30];
+    String musicPath[] = new String[30];
+    boolean audioErrorOccurred = false; // Flag to check if an error has occurred
 
-    /**
-     * Constructs a Music object and initializes the URLs for music files.
-     */
-    public Music(){
+    public Music() {
+        // Paths to music files
+        musicPath[0] = "resources/sound/music/BlueBoyAdventure.wav";
+        musicPath[1] = "resources/sound/music/Adventure-Time-Island-Song-Instrumental.wav";
 
-        musicURL [0] = getClass().getResource ("/res/sound/music/BlueBoyAdventure.wav") ;
-        musicURL [1] = getClass().getResource ("/res/sound/music/Adventure-Time-Island-Song-Instrumental.wav") ;
-
-
+        // Attempt to load music files at startup
+        for (int i = 0; i < musicPath.length; i++) {
+            if (musicPath[i] != null) { // Vérifie que le chemin n'est pas null
+                setFile(i);
+            }
+        }
     }
 
     /**
@@ -28,37 +31,61 @@ public class Music {
      *
      * @param i The index of the audio file.
      */
-    public void setFile(int i){
+    public void setFile(int i) {
         try {
-            AudioInputStream ais = AudioSystem.getAudioInputStream(musicURL[i]);
+            File musicFile = new File(musicPath[i]);
+            AudioInputStream ais = AudioSystem.getAudioInputStream(musicFile);
             clip = AudioSystem.getClip();
             clip.open(ais);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
+            audioErrorOccurred = false; // Reset the error flag on successful load
+        } catch (UnsupportedAudioFileException e) {
+            if (!audioErrorOccurred) {
+                System.out.println("Unsupported audio file: " + musicPath[i]);
+                audioErrorOccurred = true; // Set the flag to true to prevent multiple messages
+            }
+        } catch (IOException e) {
+            if (!audioErrorOccurred) {
+                System.out.println("Audio file not found: " + musicPath[i]);
+                audioErrorOccurred = true; // Set the flag to true to prevent multiple messages
+            }
+        } catch (LineUnavailableException e) {
+            System.out.println("Line unavailable for audio playback.");
         }
+    }
 
+    /**
+     * Checks if the music clip is loaded and ready to play.
+     *
+     * @return true if the music is loaded; false otherwise.
+     */
+    public boolean isMusicLoaded() {
+        return clip != null && !audioErrorOccurred;
     }
 
     /**
      * Starts playing the audio.
      */
-    public void play(){
-        clip.start();
+    public void play() {
+        if (isMusicLoaded()) {
+            clip.start();
+        } 
     }
 
     /**
      * Loops the audio continuously.
      */
-    public void loop(){
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
+    public void loop() {
+        if (isMusicLoaded()) {
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } 
     }
 
     /**
      * Stops playing the audio.
      */
-    public void stop(){
-        clip.stop();
+    public void stop() {
+        if (isMusicLoaded()) {
+            clip.stop();
+        } 
     }
 }
-

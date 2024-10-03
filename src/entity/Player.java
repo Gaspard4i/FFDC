@@ -4,7 +4,8 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javax.imageio.ImageIO;
 import main.*;
 
@@ -120,21 +121,19 @@ public class Player extends Entity{
      * @param imageName The name of the image file to load.
      * @return The loaded BufferedImage.
      */
-    public BufferedImage setup(String imageName){
-
+    public BufferedImage setup(String imageName) {
         UtilityTool uTool = new UtilityTool();
         BufferedImage image = null;
 
         try {
-
-            image = ImageIO.read(getClass().getResourceAsStream("/res/player/walking_sprites/boy/" + imageName + ".png"));
+            // Remplacement de getResourceAsStream par Files.newInputStream
+            image = ImageIO.read(Files.newInputStream(Paths.get("resources/player/walking_sprites/boy/" + imageName + ".png")));
             image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
-
         } catch (IOException e) {
+            System.out.println("Error loading image: " + imageName);
             e.printStackTrace();    
         }
         return image;
-
     }
 
     /**
@@ -229,7 +228,7 @@ public void pickUpObject(int i){
             }else{
                 gp.ui.showMessage("You need a key !");
             }
-            System.out.println("Has " + hasKey +" key(s).");
+            System.out.println("Has " + hasKey +" key(s)."); //DEBUG AMOUNT OF KEYS
             break;
             case "Boots":
                 gp.playSE(1);
@@ -245,8 +244,8 @@ public void pickUpObject(int i){
                     gp.playSE(3);
                     gp.ui.gameFinished = true;
                 }
-                gp.ui.showMessage("You won !");
                 hasKey--;
+                gp.ui.showMessage("You won !");
                 gp.ui.showMessage("You opened the chest !");
             }else{
                 gp.ui.showMessage("You need a key !");

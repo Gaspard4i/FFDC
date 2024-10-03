@@ -131,7 +131,7 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
             if (timer >= 1000000000) {
-                System.out.println("FPS: " + drawCount);
+                System.out.println("FPS: " + drawCount); //DEBUG 
                 drawCount = 0;
                 timer = 0;
             }
@@ -195,7 +195,7 @@ public class GamePanel extends JPanel implements Runnable {
             g2.drawString("Draw Time : " + passed , 10, 400);       
             g2.drawString("x : " + player.worldX/tileSize , 10,  400 + tileSize);
             g2.drawString("y : " +  player.worldY/tileSize, 10, 400 + tileSize*2);
-            System.out.println("Draw Time: " + passed); 
+            System.out.println("Draw Time: " + passed); // DEBUG MOD
         }
 
         // END
@@ -217,26 +217,45 @@ public class GamePanel extends JPanel implements Runnable {
      * @param i the index of the music track to play
      */
     public void playMusic(int i) {
-        music.setFile(i);
-        music.play();
-        music.loop();
+        try {
+            music.setFile(i); // Tente de définir le fichier
+            music.play();     // Tente de jouer la musique
+            music.loop();     // Joue la musique en boucle
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la lecture de la musique : " + e.getMessage());
+        }
     }
-    public void resumeMusic(){
-        music.play();
+    /**
+     * Resumes the currently paused music.
+     */
+    public void resumeMusic() {
+        try {
+            music.play(); // Tente de jouer la musique
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la reprise de la musique : " + e.getMessage());
+        }
     }
 
     /**
      * Stops the currently playing music.
      */
     public void stopMusic() {
-        music.stop();
+        try {
+            music.stop(); // Tente d'arrêter la musique
+        } catch (Exception e) {
+            System.out.println("Erreur lors de l'arrêt de la musique : " + e.getMessage());
+        }
     }
 
     /**
      * Stops the currently playing sound effect.
      */
     public void stopSound() {
-        se.stop();
+        try {
+            se.stop(); // Tente d'arrêter l'effet sonore
+        } catch (Exception e) {
+            System.out.println("Erreur lors de l'arrêt du son : " + e.getMessage());
+        }
     }
 
     /**
@@ -244,7 +263,12 @@ public class GamePanel extends JPanel implements Runnable {
      * @param i the index of the sound effect to play
      */
     public void playSE(int i) {
-        se.setFile(i);
-        se.play();
+        try {
+            se.setFile(i); // Tente de définir le fichier de son
+            se.play();     // Tente de jouer l'effet sonore
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la lecture de l'effet sonore : " + e.getMessage());
+        }
     }
+
 }
